@@ -16,12 +16,12 @@ class _HomePageState extends State<HomePage> {
   }
 
   List<Map> navigatorList = [
-    {'image': 'images/home-button-xuanshag.png', 'name': '悬赏'},
-    {'image': 'images/home-button-chuangke.png', 'name': '创客'},
-    {'image': 'images/home-button-tourong.png', 'name': '投融'},
-    {'image': 'images/home-button-zhishi.png', 'name': '认知'},
-    {'image': 'images/home-button-xinwen.png', 'name': '新闻'},
-    {'image': 'images/home-button-gengduo.png', 'name': '更多'},
+    {'image': 'assets/images/home-button-xuanshang.png', 'name': '悬赏'},
+    {'image': 'assets/images/home-button-chuangke.png', 'name': '创客'},
+    {'image': 'assets/images/home-button-tourong.png', 'name': '投融'},
+    {'image': 'assets/images/home-button-zhishi.png', 'name': '认知'},
+    {'image': 'assets/images/home-button-xinwen.png', 'name': '新闻'},
+    {'image': 'assets/images/home-button-gengduo.png', 'name': '更多'},
   ];
   List<Map> rewardList = [
     {
@@ -77,111 +77,108 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-
     return ListView(children: <Widget>[
-          SwiperDiy(),
-          Navigator(navigatorList: this.navigatorList),
-          Column(
+      SwiperDiy(),
+      Navigator(navigatorList: this.navigatorList),
+      Column(
+        children: <Widget>[
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: <Widget>[
-                  Container(
-                      margin: EdgeInsets.only(left: ScreenUtil().setWidth(60)),
-                      padding:
-                          EdgeInsets.only(bottom: ScreenUtil().setHeight(24)),
-                      decoration: BoxDecoration(
-                          border: Border(
-                              bottom: BorderSide(
-                                  width: 2,
-                                  color: Color.fromRGBO(39, 111, 255, 1)))),
-                      child: GradientText(
-                        '悬赏',
-                        ScreenUtil().setWidth(32),
-                        gradient: LinearGradient(
-                          colors: [
-                            Color.fromRGBO(43, 116, 228, 1),
-                            Color.fromRGBO(25, 29, 134, 1),
-                          ],
-                          begin: Alignment.topCenter,
-                          end: Alignment.bottomCenter,
-                        ),
-                      )),
-                  Container(
-                      margin: EdgeInsets.only(right: ScreenUtil().setWidth(60)),
-                      width: ScreenUtil().setWidth(230),
-                      child: Row(
-                        children: <Widget>[
-                          SizedBox(
-                              width: ScreenUtil().setWidth(104),
-                              height: ScreenUtil().setHeight(50),
-                              child: FlatButton(
-                                  // padding: EdgeInsets.only(left: 2, right: 2),
-                                  child: Text("城市"),
-                                  onPressed: () {},
-                                  color: Colors.grey[100],
-                                  // splashColor: Colors.blue,
-                                  textColor: Color.fromRGBO(106, 110, 116, 1),
-                                  padding: EdgeInsets.all(0.0),
-                                  shape: BeveledRectangleBorder(
-                                    borderRadius: BorderRadius.circular(4),
-                                  ))),
-                          SizedBox(width: ScreenUtil().setWidth(22)),
-                          SizedBox(
-                              width: ScreenUtil().setWidth(104),
-                              height: ScreenUtil().setHeight(50),
-                              child: FlatButton(
-                                  child: Text("行业"),
-                                  onPressed: () {},
-                                  color: Colors.grey[100],
-                                  // splashColor: Colors.blue,
-                                  textColor: Color.fromRGBO(106, 110, 116, 1),
-                                  padding: EdgeInsets.all(0.0),
-                                  shape: BeveledRectangleBorder(
-                                    borderRadius: BorderRadius.circular(4),
-                                  )))
-                        ],
-                      )),
-                ],
-              ),
               Container(
-                  padding: EdgeInsets.fromLTRB(
-                      ScreenUtil().setHeight(60), 10, 0, 10),
+                  margin: EdgeInsets.only(left: ScreenUtil().setWidth(60)),
+                  padding: EdgeInsets.only(bottom: ScreenUtil().setHeight(24)),
                   decoration: BoxDecoration(
                       border: Border(
-                          top: BorderSide(
-                              width: 1, color: Colors.grey.withAlpha(30)),
                           bottom: BorderSide(
-                              width: 1, color: Colors.grey.withAlpha(30)))),
+                              width: 2,
+                              color: Color.fromRGBO(39, 111, 255, 1)))),
+                  child: GradientText(
+                    '悬赏',
+                    ScreenUtil().setWidth(32),
+                    gradient: LinearGradient(
+                      colors: [
+                        Color.fromRGBO(43, 116, 228, 1),
+                        Color.fromRGBO(25, 29, 134, 1),
+                      ],
+                      begin: Alignment.topCenter,
+                      end: Alignment.bottomCenter,
+                    ),
+                  )),
+              Container(
+                  margin: EdgeInsets.only(right: ScreenUtil().setWidth(60)),
+                  width: ScreenUtil().setWidth(230),
                   child: Row(
                     children: <Widget>[
-                      Text("热度",
-                          style:
-                              TextStyle(fontSize: ScreenUtil().setWidth(25))),
-                      Text("时间",
-                          style: TextStyle(fontSize: ScreenUtil().setWidth(25)))
+                      SizedBox(
+                          width: ScreenUtil().setWidth(104),
+                          height: ScreenUtil().setHeight(50),
+                          child: FlatButton(
+                              // padding: EdgeInsets.only(left: 2, right: 2),
+                              child: Text("城市"),
+                              onPressed: () {},
+                              color: Colors.grey[100],
+                              // splashColor: Colors.blue,
+                              textColor: Color.fromRGBO(106, 110, 116, 1),
+                              padding: EdgeInsets.all(0.0),
+                              shape: BeveledRectangleBorder(
+                                borderRadius: BorderRadius.circular(4),
+                              ))),
+                      SizedBox(width: ScreenUtil().setWidth(22)),
+                      SizedBox(
+                          width: ScreenUtil().setWidth(104),
+                          height: ScreenUtil().setHeight(50),
+                          child: FlatButton(
+                              child: Text("行业"),
+                              onPressed: () {},
+                              color: Colors.grey[100],
+                              // splashColor: Colors.blue,
+                              textColor: Color.fromRGBO(106, 110, 116, 1),
+                              padding: EdgeInsets.all(0.0),
+                              shape: BeveledRectangleBorder(
+                                borderRadius: BorderRadius.circular(4),
+                              )))
                     ],
                   )),
             ],
           ),
           Container(
-              padding: EdgeInsets.only(
-                  left: ScreenUtil().setWidth(60),
-                  right: ScreenUtil().setWidth(60)),
-              child: ListView.separated(
-                shrinkWrap: true, //解决无限高度问题
-                physics: NeverScrollableScrollPhysics(), //禁用滑动事件
-                itemBuilder: (BuildContext context, int index) {
-                  return RewardItem(rewardList[index]);
-                  // return ListTile(title: Text("$index"));
-                },
-                itemCount: rewardList.length,
-                //分割器构造器
-                separatorBuilder: (BuildContext context, int index) {
-                  return Divider(color: Colors.grey, height: 1);
-                },
+              padding:
+                  EdgeInsets.fromLTRB(ScreenUtil().setHeight(60), 10, 0, 10),
+              decoration: BoxDecoration(
+                  border: Border(
+                      top: BorderSide(
+                          width: 1, color: Colors.grey.withAlpha(30)),
+                      bottom: BorderSide(
+                          width: 1, color: Colors.grey.withAlpha(30)))),
+              child: Row(
+                children: <Widget>[
+                  Text("热度",
+                      style: TextStyle(fontSize: ScreenUtil().setWidth(25))),
+                  Text("时间",
+                      style: TextStyle(fontSize: ScreenUtil().setWidth(25)))
+                ],
               )),
-        ]);
+        ],
+      ),
+      Container(
+          padding: EdgeInsets.only(
+              left: ScreenUtil().setWidth(60),
+              right: ScreenUtil().setWidth(60)),
+          child: ListView.separated(
+            shrinkWrap: true, //解决无限高度问题
+            physics: NeverScrollableScrollPhysics(), //禁用滑动事件
+            itemBuilder: (BuildContext context, int index) {
+              return RewardItem(rewardList[index]);
+              // return ListTile(title: Text("$index"));
+            },
+            itemCount: rewardList.length,
+            //分割器构造器
+            separatorBuilder: (BuildContext context, int index) {
+              return Divider(color: Colors.grey, height: 1);
+            },
+          )),
+    ]);
   }
 }
 
@@ -224,9 +221,9 @@ class Navigator extends StatefulWidget {
 
 class _NavigatorState extends State<Navigator> {
   List<Map> moreNavigatorList = [
-    {'image': 'images/home-button-gongxinang.png', 'name': '共享'},
-    {'image': 'images/home-button-baoxian.png', 'name': '保险'},
-    {'image': 'images/jijin.png', 'name': '基金'},
+    {'image': 'assets/images/home-button-gongxiang.png', 'name': '共享'},
+    {'image': 'assets/images/home-button-baoxian.png', 'name': '保险'},
+    {'image': 'assets/images/home-button-jijing.png', 'name': '基金'},
   ];
 
   Widget _wrapViewItemUI(BuildContext context, item) {
@@ -331,7 +328,7 @@ class _RewardItemState extends State<RewardItem> {
                   fontWeight: FontWeight.bold),
             ),
             SizedBox(width: ScreenUtil().setWidth(20)),
-            Image.asset("images/home-icon-yirenzheng.png",
+            Image.asset("assets/images/home-icon-yirenzheng.png",
                 width: 16, height: 16),
           ],
         ),
@@ -400,7 +397,7 @@ class _RewardItemState extends State<RewardItem> {
                   fontSize: ScreenUtil().setWidth(16)),
             ),
             SizedBox(width: ScreenUtil().setWidth(32)),
-            Image.asset("images/home-icon-shangjin.png"),
+            Image.asset("assets/images/home-icon-shangjin.png"),
             SizedBox(width: ScreenUtil().setWidth(8)),
             Text(
               "已交赏金",

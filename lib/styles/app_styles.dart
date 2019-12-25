@@ -5,8 +5,8 @@ class AppColors {
   static const Primary = Color(0xFF276FFF);
   static const SubPrimary = Color(0xFF0BA3FE);
   static const AccentColor = Color(0XFFFF6969);
-  static const FontColor = Color(0xFF333333);
-  static const SubFontColor = Color(0xFF6F7B85);
+  static const FontColor = Color(0xFF181818);
+  static const SubFontColor = Color(0xFF333333);
   static const ThirdFontColor = Color(0xFF95A1AB);
   static const DisableColor = Color(0xFFC9C9C9);
   static const SuccessColor = Color(0xFF44DB5E);
@@ -19,6 +19,16 @@ class AppColors {
 }
 
 class AppStyles {
+  static TextStyle inputHintTextStyle = TextStyle(
+    fontSize: ScreenUtil().setSp(30.0),
+    color: Color(0XFFC0C2DB),
+  );
+
+  static TextStyle inputTextStyle = TextStyle(
+    fontSize: ScreenUtil().setSp(30.0),
+    color: AppColors.FontColor,
+  );
+
   static TextStyle defaultTextStyle = TextStyle(
     fontSize: ScreenUtil().setSp(24.0),
     color: AppColors.FontColor,

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 // import 'package:flutter/cupertino.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:wanniu_app/components/components_index.dart';
 import 'package:wanniu_app/pages/pages_tabs/navigation.dart';
 
 import 'home_page.dart';
@@ -61,11 +62,8 @@ class _IndexPageState extends State<IndexPage> {
     //   )
     // ];
 
-    return Scaffold(
-      // backgroundColor: Colors.transparent,
-      // appBar: AppBar(
-      //   title: Text("GN App"),
-      // ),
+    return Background(
+        child: Scaffold(
       body: Navigation(),
       drawer: Drawer(
           child: Column(
@@ -92,6 +90,6 @@ class _IndexPageState extends State<IndexPage> {
               title: Text("设置中心"))
         ],
       )),
-    );
+    ));
   }
 }
