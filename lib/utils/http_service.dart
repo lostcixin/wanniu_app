@@ -4,6 +4,7 @@ import 'package:flui/widgets/toast.dart';
 import 'package:wanniu_app/data/api.dart';
 import 'package:wanniu_app/data/config.dart';
 import 'package:wanniu_app/utils/controller_service.dart';
+import 'package:wanniu_app/utils/storage_service.dart';
 
 class HttpService {
   /// get
@@ -17,7 +18,7 @@ class HttpService {
     bool showLoading = false,
     bool showFail = true,
   }) async {
-    // String token = await StorageService.get('token');
+    String token = await StorageService.get('token');
     Function dismiss;
     if (showLoading == true) {
       dismiss = FLToast.loading(text: 'Loading...');
@@ -29,11 +30,11 @@ class HttpService {
       receiveTimeout: receiveTimeout,
       contentType: ContentType.json,
     );
-    // if (token != null) {
-    //   options.headers = {
-    //     'Authorization': 'Bearer ' + token,
-    //   };
-    // }
+    if (token != null) {
+      options.headers = {
+        'Authorization': 'Bearer ' + token,
+      };
+    }
     Dio dio = new Dio(options);
     return dio.get(api).then((response) {
       if (showLoading == true) {
@@ -82,7 +83,7 @@ class HttpService {
     bool showLoading = false,
     bool showFail = true,
   }) async {
-    // String token = await StorageService.get('token');
+    String token = await StorageService.get('token');
     Function dismiss;
     if (showLoading == true) {
       dismiss = FLToast.loading(text: 'Loading...');
@@ -93,11 +94,11 @@ class HttpService {
       receiveTimeout: receiveTimeout,
       contentType: ContentType.json,
     );
-    // if (token != null) {
-    //   options.headers = {
-    //     'Authorization': 'Bearer ' + token,
-    //   };
-    // }
+    if (token != null) {
+      options.headers = {
+        'Authorization': 'Bearer ' + token,
+      };
+    }
     Dio dio = new Dio(options);
     return dio.post(api, data: params).then((response) {
       if (showLoading == true) {
