@@ -4,6 +4,9 @@ import 'package:flutter_swiper/flutter_swiper.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class HomePage extends StatefulWidget {
+  final Function showDrawer;
+
+  const HomePage({Key key, this.showDrawer}) : super(key: key);
   @override
   _HomePageState createState() => _HomePageState();
 }
@@ -75,10 +78,19 @@ class _HomePageState extends State<HomePage> {
     },
   ];
 
+  List<Map> bannerlist = [
+    {"url": "https://www.itying.com/images/flutter/1.png"},
+    {"url": "https://www.itying.com/images/flutter/2.png"},
+    {"url": "https://www.itying.com/images/flutter/3.png"}
+  ];
+
   @override
   Widget build(BuildContext context) {
     return ListView(children: <Widget>[
-      SwiperDiy(),
+      SwiperDiy(
+        list: bannerlist,
+        openDrawer: widget.showDrawer,
+      ),
       Navigator(navigatorList: this.navigatorList),
       Column(
         children: <Widget>[
@@ -184,27 +196,78 @@ class _HomePageState extends State<HomePage> {
 
 //首页轮播组件
 class SwiperDiy extends StatelessWidget {
-  List<Map> list = [
-    {"url": "https://www.itying.com/images/flutter/1.png"},
-    {"url": "https://www.itying.com/images/flutter/2.png"},
-    {"url": "https://www.itying.com/images/flutter/3.png"}
-  ];
-
+  final Function openDrawer;
+  final List<Map> list;
+  const SwiperDiy({Key key, this.openDrawer, this.list}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: double.infinity,
-      child: AspectRatio(
-          aspectRatio: 375 / 163,
-          child: new Swiper(
-              itemBuilder: (BuildContext context, int index) {
-                return Image.network(this.list[index]["url"],
-                    fit: BoxFit.cover);
-              },
-              itemCount: list.length,
-              pagination: new SwiperPagination(),
-              autoplay: true,
-              control: new SwiperControl())),
+    return Stack(
+      children: <Widget>[
+        Container(
+          width: double.infinity,
+          padding: EdgeInsets.only(bottom: ScreenUtil().setWidth(29)),
+          child: AspectRatio(
+              aspectRatio: 375 / 163,
+              child: new Swiper(
+                itemBuilder: (BuildContext context, int index) {
+                  return Image.network(this.list[index]["url"],
+                      fit: BoxFit.cover);
+                },
+                itemCount: list.length,
+                autoplay: true,
+              )),
+        ),
+        Positioned(
+          left: ScreenUtil().setWidth(31),
+          top: ScreenUtil().setWidth(27),
+          child: GestureDetector(
+            onTap: () {
+              openDrawer();
+            },
+            child: Image.asset(
+              'assets/images/cehua.png',
+              width: ScreenUtil().setWidth(36),
+              height: ScreenUtil().setWidth(36),
+            ),
+          ),
+        ),
+        Positioned(
+          left: ScreenUtil().setWidth(101),
+          bottom: 0,
+          child: Container(
+            width: ScreenUtil().setWidth(548),
+            height: ScreenUtil().setWidth(58),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Icon(
+                  Icons.search,
+                  size: ScreenUtil().setWidth(32),
+                  color: Color(0XFFC5C5C5),
+                ),
+                Text(
+                  '项目/行业/机构/基金',
+                  style: TextStyle(
+                    color: Color(0XFFC5C5C5),
+                    fontSize: ScreenUtil().setSp(22),
+                  ),
+                )
+              ],
+            ),
+            decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.all(
+                    Radius.circular(ScreenUtil().setWidth(29))),
+                boxShadow: <BoxShadow>[
+                  BoxShadow(
+                    color: Color(0XFFC5C5C5),
+                    offset: Offset(0.0, 0.0),
+                    blurRadius: 7.0,
+                  ),
+                ]),
+          ),
+        )
+      ],
     );
   }
 }

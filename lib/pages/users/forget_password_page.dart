@@ -8,6 +8,7 @@ class ForgetPasswordPage extends StatefulWidget {
 
 class _ForgetPasswordPageState extends State<ForgetPasswordPage> {
   GlobalKey _globalKey = new GlobalKey<FormState>(); //用于检查输入框是否为空
+  bool obscureText = true;
   @override
   Widget build(BuildContext context) {
     return Background(
@@ -24,9 +25,25 @@ class _ForgetPasswordPageState extends State<ForgetPasswordPage> {
                   child: Column(
                     children: <Widget>[
                       TextFormField(
+                        style: AppStyles.inputTextStyle,
+                        keyboardType: TextInputType.phone,
                         decoration: InputDecoration(
                           hintText: "请输入电话号码",
-                          prefixIcon: Icon(Icons.person),
+                          focusedBorder: UnderlineInputBorder(
+                            borderSide:
+                                BorderSide(color: Color.fromRGBO(0, 0, 0, 0.1)),
+                          ),
+                          hintStyle: AppStyles.inputHintTextStyle,
+                          contentPadding: const EdgeInsets.only(top: 18),
+                          enabledBorder: UnderlineInputBorder(
+                            borderSide:
+                                BorderSide(color: Color.fromRGBO(0, 0, 0, 0.1)),
+                          ),
+                          prefixIcon: Image.asset(
+                            'assets/images/phone.png',
+                            width: ScreenUtil().setWidth(50),
+                            height: ScreenUtil().setWidth(50),
+                          ),
                         ),
                         validator: (v) {
                           return v.trim().length > 0 ? null : "手机号码不能为空";
@@ -35,7 +52,21 @@ class _ForgetPasswordPageState extends State<ForgetPasswordPage> {
                       TextFormField(
                         decoration: InputDecoration(
                             hintText: "请输入验证码",
-                            prefixIcon: Icon(Icons.person),
+                            hintStyle: AppStyles.inputHintTextStyle,
+                            contentPadding: const EdgeInsets.only(top: 18),
+                            focusedBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(
+                                  color: Color.fromRGBO(0, 0, 0, 0.1)),
+                            ),
+                            enabledBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(
+                                  color: Color.fromRGBO(0, 0, 0, 0.1)),
+                            ),
+                            prefixIcon: Image.asset(
+                              'assets/images/code.png',
+                              width: ScreenUtil().setWidth(50),
+                              height: ScreenUtil().setWidth(50),
+                            ),
                             suffixIcon: Container(
                               padding: EdgeInsets.fromLTRB(
                                   0,
@@ -58,13 +89,32 @@ class _ForgetPasswordPageState extends State<ForgetPasswordPage> {
                       TextFormField(
                         decoration: InputDecoration(
                             hintText: "请输入6位以上字母数字组合",
-                            prefixIcon: Icon(Icons.person),
+                            hintStyle: AppStyles.inputHintTextStyle,
+                            contentPadding: const EdgeInsets.only(top: 18),
+                            focusedBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(
+                                  color: Color.fromRGBO(0, 0, 0, 0.1)),
+                            ),
+                            enabledBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(
+                                  color: Color.fromRGBO(0, 0, 0, 0.1)),
+                            ),
+                            prefixIcon: Image.asset(
+                              'assets/images/password.png',
+                              width: ScreenUtil().setWidth(50),
+                              height: ScreenUtil().setWidth(50),
+                            ),
                             suffixIcon: IconButton(
-                              onPressed: () {},
-                              icon: Icon(
-                                Icons.remove_red_eye,
-                                color: AppColors.DisableColor,
-                              ),
+                              onPressed: () {
+                                setState(() {
+                                  this.obscureText = !this.obscureText;
+                                });
+                              },
+                              icon: Image.asset(
+                                  this.obscureText
+                                      ? 'assets/images/no_show.png'
+                                      : 'assets/images/show.png',
+                                  width: ScreenUtil().setWidth(50)),
                             )),
                         validator: (v) {
                           return v.trim().length > 0 ? null : "密码不能为空";

@@ -6,6 +6,8 @@ import 'package:wanniu_app/pages/users/login_page.dart';
 import 'package:wanniu_app/styles/app_styles.dart';
 import 'package:wanniu_app/utils/route_util.dart';
 
+import 'pages/pages_tabs/tabs_page.dart';
+
 void main() {
   return runApp(MyApp());
 }
@@ -43,6 +45,6 @@ class _MyAppState extends State<MyApp> {
                     ),
                   ),
                 )),
-            home: LoginPage()));
+            home: TabsPage()));
   }
 }
